@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>야 너두 파이썬?</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🐍 야 너두 파이썬? 🧠</h1>
+        <p>제시된 파이썬 코드의 출력을 예측해보세요!</p>
+    </header>
+
+    <main>
+        <section class="code-area">
+            <h2>📜 파이썬 코드</h2>
+            <pre id="python-code">{{ code }}</pre>
+        </section>
+
+        <section class="answer-area">
+            <label for="user-answer">예상 출력 결과:</label><br>
+            <textarea id="user-answer" rows="4" placeholder="출력을 예측해보세요"></textarea><br>
+            <button id="check-answer">정답 확인</button>
+        </section>
+
+        <section class="result-area">
+            <h3>결과:</h3>
+            <div id="result-message">아직 확인하지 않았어요.</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 야 너두 파이썬?</p>
+    </footer>
+
+    <!-- 서버에서 전달한 실제 출력값을 JS에서 사용할 수 있게 전달 -->
+    <script>
+        const actualOutput = `{{ output | escape | replace('\n', '\\n') }}`;
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
