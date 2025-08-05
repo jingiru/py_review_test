@@ -4,6 +4,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultMessage = document.getElementById("result-message");
     const resultContainer = document.getElementById("result-container");
 
+    
+    // 이스케이프 문자열을 실제 개행 등으로 변환
+    function decodeEscapedString(str) {
+        return str
+            .replace(/\\\\/g, "\\") // 먼저 \\ → \
+            .replace(/\\n/g, "\n")  // \n → 줄바꿈
+            .replace(/\\t/g, "\t")  // \t → 탭
+            .replace(/\\r/g, "\r")  // \r → 캐리지리턴
+            .replace(/\\"/g, "\"")  // \" → "
+            .replace(/\\'/g, "'");  // \' → '
+    }
+
     checkBtn.addEventListener("click", () => {
         const userAnswer = userInput.value.trim();
 

@@ -49,8 +49,9 @@
 
     <!-- 서버에서 전달한 실제 출력값을 JS에서 사용할 수 있게 전달 -->
     <script>
-        const actualOutput = `{{ output | replace('\n', '\\n') | replace('\r', '\\r') | replace('\\', '\\\\') | replace('"', '\\"') }}`;
+        const actualOutput = {{ output | tojson | safe }};
     </script>
+
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

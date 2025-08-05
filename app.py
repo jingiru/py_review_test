@@ -2,6 +2,18 @@ from flask import Flask, render_template
 import random
 import io
 import contextlib
+import codecs
+
+def is_correct(user_input: str, expected_output: str) -> bool:
+    # expected_output: 이스케이프 문자로 저장된 정답 ex) '1\\n2\\n3'
+    # user_input: 실제 줄바꿈으로 입력된 문자열 ex) '1\n2\n3'
+    
+    # 정답 문자열을 실제 개행 포함 형태로 디코딩
+    decoded_expected = codecs.decode(expected_output, 'unicode_escape')
+    
+    # 비교 (공백 제거)
+    return user_input.strip() == decoded_expected.strip()
+
 
 app = Flask(__name__)
 
