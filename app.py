@@ -36,7 +36,7 @@ questions = [
         "output": "AAA"
     },
     {
-        "code": 'print("1\\n2\\n3")',
+        "code": 'print(1)\nprint(2)\nprint(3)',
         "output": "1\n2\n3"
     },
     {

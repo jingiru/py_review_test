@@ -195,8 +195,8 @@ main {
 }
 
 /* ===== 버튼 ===== */
-.btn {
-    background: linear-gradient(135deg, #4299e1, #3182ce);
+.btn-next,
+.btn-check {
     color: white;
     border: none;
     padding: 14px 32px;
@@ -205,19 +205,44 @@ main {
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-.btn:hover {
+
+/* ===== 다른 문제 도전 버튼 디자인 ===== */
+.btn-next {
+    background: linear-gradient(135deg, #9f7aea, #6b46c1);
+    box-shadow: 0 4px 15px rgba(113, 128, 150, 0.3);
+}
+
+.btn-next:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #805ad5, #553c9a);
+    box-shadow: 0 8px 25px rgba(113, 128, 150, 0.4);
+}
+
+.btn-next:active {
+    transform: translateY(0);
+}
+
+
+/* ===== 정답 확인 버튼 디자인 ===== */
+.btn-check {
+    background: linear-gradient(135deg, #4299e1, #3182ce);
+    box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+}
+
+.btn-check:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4);
     background: linear-gradient(135deg, #3182ce, #2c5aa0);
 }
 
-.btn:active {
+.btn-check:active {
     transform: translateY(0);
 }
+
+
 
 /* ===== 결과 영역 ===== */
 .result-section {
