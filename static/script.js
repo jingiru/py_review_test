@@ -1,3 +1,49 @@
+function triggerFireworks() {
+    const canvas = document.getElementById('fireworks-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 100;
+
+    for (let i = 0; i < particleCount; i++) {
+        particles.push({
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            radius: Math.random() * 3 + 2,
+            color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+            angle: Math.random() * 2 * Math.PI,
+            speed: Math.random() * 5 + 2,
+            alpha: 1
+        });
+    }
+
+    const interval = setInterval(() => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(p => {
+            p.x += Math.cos(p.angle) * p.speed;
+            p.y += Math.sin(p.angle) * p.speed;
+            p.alpha -= 0.02;
+
+            ctx.beginPath();
+            ctx.globalAlpha = p.alpha;
+            ctx.fillStyle = p.color;
+            ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+            ctx.fill();
+        });
+
+        if (particles.every(p => p.alpha <= 0)) {
+            clearInterval(interval);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    }, 16);
+}
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const checkBtn = document.getElementById("check-answer");
     const nextBtn = document.getElementById("next-question");
@@ -45,6 +91,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (userAnswer === actualOutput) {
             resultMessage.textContent = "🎉 정답입니다! 완벽해요!";
             resultContainer.classList.add("result-correct");
+
+            triggerFireworks();  // 여기에 폭죽 호출 추가
 
             // 1.5초 후 자동 새 문제 로딩
             setTimeout(loadNewQuestion, 500);
