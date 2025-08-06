@@ -25,6 +25,8 @@
                         </div>
                         <pre id="python-code">{{ code }}</pre>
                     </div>
+                    <button id="next-question" class="btn" style="margin-top: 10px;">다른 문제 도전하기</button>
+
                 </section>
 
                 <section class="card answer-section">
@@ -49,7 +51,7 @@
 
     <!-- 서버에서 전달한 실제 출력값을 JS에서 사용할 수 있게 전달 -->
     <script>
-        const actualOutput = {{ output | tojson | safe }};
+        let actualOutput = {{ output | tojson | safe }};
     </script>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>

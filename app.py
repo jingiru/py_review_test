@@ -171,6 +171,15 @@ def index():
         output=problem["output"]
     )
 
+@app.route("/next")
+def next_question():
+    problem = random.choice(questions)
+    return {
+        "code": problem["code"],
+        "output": problem["output"]
+    }
+    
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
 
