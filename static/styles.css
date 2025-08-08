@@ -1,5 +1,4 @@
-/* ===== 폰트 및 전역 설정 ===== */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+/* ===== 전역 설정 ===== */
 
 * {
     margin: 0;
@@ -29,8 +28,7 @@ body {
 /* ===== 헤더 ===== */
 header {
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     padding: 25px 40px;
     text-align: center;
@@ -70,10 +68,9 @@ main {
 
 .card {
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     padding: 25px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
@@ -247,10 +244,9 @@ main {
 /* ===== 결과 영역 ===== */
 .result-section {
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     padding: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 150px;
