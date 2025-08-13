@@ -24,8 +24,36 @@ questions = [
         "output": "Hello, Python!"
     },
     {
+        "code": 'print("100")',
+        "output": "100"
+    },
+    {
+        "code": 'print(500)',
+        "output": "500"
+    },
+    {
+        "code": 'print("num", 1000)',
+        "output": "num 1000"
+    },
+    {
+        "code": 'print("hi"*10)',
+        "output": "hihihihihihihihihihi"
+    },
+    {
+        "code": 'print("hello "*3)',
+        "output": "hello hello hello"
+    },
+    {
+        "code": 'print("python")',
+        "output": "python"
+    },
+    {
         "code": 'print(3 + 4)',
         "output": "7"
+    },
+    {
+        "code": 'print(2 * 3 + 4)',
+        "output": "10"
     },
     {
         "code": 'for i in range(2):\n    print("Hi")',
@@ -42,10 +70,6 @@ questions = [
     {
         "code": 'print(len("Python"))',
         "output": "6"
-    },
-    {
-        "code": 'print(2 * 3 + 4)',
-        "output": "10"
     },
     {
         "code": 'x = [1, 2, 3]\nprint(x[1])',
