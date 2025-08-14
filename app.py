@@ -88,10 +88,6 @@ questions = [
         "output": "1010"
     },
     {
-        "code": 'num1="정보"\nnum2=3\nprint(‘num1’*num2)',
-        "output": "num1num1num1"
-    },
-    {
         "code": '"ace=‘10’\nbye=‘200’\nsum=ace+bye\nprint(sum)"',
         "output": "10200"
     },
