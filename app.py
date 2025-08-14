@@ -20,6 +20,10 @@ app = Flask(__name__)
 # 문제 리스트 (코드와 예상 출력 짝)
 questions = [
     {
+        "code": 'print(10 * 2)',
+        "output": "20"
+    },
+    {
         "code": 'print("Hello, Python!")',
         "output": "Hello, Python!"
     },
@@ -68,10 +72,6 @@ questions = [
         "output": "1\n2\n3"
     },
     {
-        "code": 'print(len("Python"))',
-        "output": "6"
-    },
-    {
         "code": 'x = [1, 2, 3]\nprint(x[1])',
         "output": "2"
     },
@@ -82,6 +82,22 @@ questions = [
     {
         "code": 'for i in range(1, 4):\n    print("A" * i)',
         "output": "A\nAA\nAAA"
+    },
+    {
+        "code": 'a = input() # 10 입력\nprint(a*2)',
+        "output": "1010"
+    },
+    {
+        "code": 'num1=‘정보’\nnum2=3\nprint(‘num1’*num2)',
+        "output": "num1num1num1"
+    },
+    {
+        "code": '"ace=‘10’\nbye=‘200’\nsum=ace+bye\nprint(sum)"',
+        "output": "10200"
+    },
+    {
+        "code": 'print(len("Python"))',
+        "output": "6"
     },
     {
         "code": 'print(sum([1, 2, 3]))',
@@ -109,6 +125,10 @@ questions = [
     },
     {
         "code": 'for i in range(3):\n    print(i**2)',
+        "output": "0\n1\n4"
+    }
+    {
+        "code": '"age = int(input()) # 19 입력\nstudent = input() # Y 입력\n\nif age < 19 and student == ‘Y’:\n    print(‘청소년 학생 할인 적용’)\nelif age < 19 or student == ‘Y’:\n    print(‘부분 할인 적용’)\nelse:\n    print(‘할인 대상 아님’)"',
         "output": "0\n1\n4"
     }
 ]
