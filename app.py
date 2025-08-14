@@ -128,8 +128,12 @@ questions = [
         "output": "0\n1\n4"
     },
     {
+        "code": '"A = 1\nresult = 0\nwhile A <= 15:\n    if not A % 2:\n        result += A\n    A += 1\nprint(result)"',
+        "output": "56"
+    },
+    {
         "code": 'age = int(input()) # 19 입력\nstudent = input() # Y 입력\n\nif age < 19 and student == ‘Y’:\n    print(‘청소년 학생 할인 적용’)\nelif age < 19 or student == ‘Y’:\n    print(‘부분 할인 적용’)\nelse:\n    print(‘할인 대상 아님’)',
-        "output": "0\n1\n4"
+        "output": "부분 할인 적용"
     },
     {
         "code": 'data=['파이썬',['코딩','은','재미','있','다'],'배우자']\ndata[1][2]='도전'\ndata[1][3:5]=['해','보자']\nprint(data[1][2:4])',
