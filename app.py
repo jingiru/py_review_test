@@ -112,8 +112,8 @@ questions = [
         "output": "1"
     },
     {
-        "code": 'print([i for i in range(3)])',
-        "output": "[0, 1, 2]"
+        "code": 'for i in range(3)\n    print(i)',
+        "output": "0\n1\n2"
     },
     {
         "code": 'print(min(5, 7, 2))',
