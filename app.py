@@ -88,7 +88,7 @@ questions = [
         "output": "1010"
     },
     {
-        "code": 'num1=‘정보’\nnum2=3\nprint(‘num1’*num2)',
+        "code": 'num1="정보"\nnum2=3\nprint(‘num1’*num2)',
         "output": "num1num1num1"
     },
     {
@@ -128,7 +128,7 @@ questions = [
         "output": "0\n1\n4"
     },
     {
-        "code": '"A = 1\nresult = 0\nwhile A <= 15:\n    if not A % 2:\n        result += A\n    A += 1\nprint(result)"',
+        "code": 'A = 1\nresult = 0\nwhile A < = 15:\n    if not A % 2:\n        result += A\n    A += 1\nprint(result)',
         "output": "56"
     },
     {
@@ -136,9 +136,13 @@ questions = [
         "output": "부분 할인 적용"
     },
     {
-        "code": 'data=['파이썬',['코딩','은','재미','있','다'],'배우자']\ndata[1][2]='도전'\ndata[1][3:5]=['해','보자']\nprint(data[1][2:4])',
-        "output": "['도전','해']"
+        "code": "data=['파이썬',['코딩','은','재미','있','다'],'배우자']\n"
+                "data[1][2]='도전'\n"
+                "data[1][3:5]=['해','보자']\n"
+                "print(data[1][2:4])",
+        "output": "['도전', '해']"
     }
+
 ]
 
 @app.route("/")
