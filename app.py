@@ -126,7 +126,7 @@ questions = [
     {
         "code": 'for i in range(3):\n    print(i**2)',
         "output": "0\n1\n4"
-    }
+    },
     {
         "code": '"age = int(input()) # 19 입력\nstudent = input() # Y 입력\n\nif age < 19 and student == ‘Y’:\n    print(‘청소년 학생 할인 적용’)\nelif age < 19 or student == ‘Y’:\n    print(‘부분 할인 적용’)\nelse:\n    print(‘할인 대상 아님’)"',
         "output": "0\n1\n4"
