@@ -88,7 +88,7 @@ questions = [
         "output": "1010"
     },
     {
-        "code": '"ace=‘10’\nbye=‘200’\nsum=ace+bye\nprint(sum)"',
+        "code": "ace='10'\nbye='200'\nsum=ace+bye\nprint(sum)",
         "output": "10200"
     },
     {
