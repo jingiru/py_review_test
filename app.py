@@ -32,8 +32,8 @@ def _gs_client():
 
 # ===== 시트 -> 문제 로드 (헤더 중복/다국어 안전 처리) =====
 def _normalize_difficulty(val: str) -> str:
-    v = (val or "").strip().lower()
-    return v
+    v = (val or "")
+    return v.strip()
 
 def load_questions_from_sheet(force: bool = False):
     global _questions_cache, _cache_loaded_at
@@ -69,15 +69,19 @@ def load_questions_from_sheet(force: bool = False):
     idx_code = find_index(["code", "문제"])
     idx_out  = find_index(["output", "답"])
 
-    rows = []
+     rows = []
     for r in values[1:]:
-        def cell(idx):
+        # 메타 데이터(난이도/유형)는 trim, code/output은 공백 보존
+        def cell_trim(idx):
             return (r[idx].strip() if idx is not None and idx < len(r) else "")
+        def cell_raw(idx):
+            return (r[idx] if idx is not None and idx < len(r) else "")
 
-        difficulty = _normalize_difficulty(cell(idx_diff))
-        qtype      = cell(idx_type)
-        code       = cell(idx_code)
-        output     = cell(idx_out)
+        difficulty = _normalize_difficulty(cell_trim(idx_diff))
+        qtype      = cell_trim(idx_type)
+        code       = cell_raw(idx_code)   # 공백 보존
+        output     = cell_raw(idx_out)    # 공백 보존 (끝 공백 포함)
+
 
         # 빈 행은 스킵
         if not code and not output:
