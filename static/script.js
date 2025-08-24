@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultMessage = document.getElementById("result-message");
     const resultContainer = document.getElementById("result-container");
 
-    // 정답(시트에서 온 값)을 저장할 변수 (엄격 비교)
-    let actualOutput = "";
+    // 서버에서 index.html이 내려준 전역값 사용 (초기 문제용)
+    let expected = window.actualOutput ?? "";
 
     // 문제 새로고침 함수
     const loadNewQuestion = async () => {
@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // 코드 변경
         document.getElementById("python-code").textContent = data.code;
 
-        // 정답 업데이트 (시트가 실제 개행/공백을 포함해 내려주므로 그대로 사용)
-        actualOutput = data.output;
+        // 정답 업데이트 (시트의 공백/개행을 그대로 유지)
+        expected = data.output;
 
         // 입력창과 결과 초기화
         userInput.value = "";
@@ -71,14 +71,12 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     checkBtn.addEventListener("click", () => {
-        // 공백/개행까지 포함한 사용자 입력 (trim 제거)
+        // 공백/개행 포함 그대로 비교
         const userAnswer = userInput.value;
 
-        // 결과 컨테이너의 기존 클래스 제거
         resultContainer.classList.remove("result-correct", "result-incorrect");
 
-        // 엄격 비교 (끝 공백 포함 완전 일치)
-        if (userAnswer === actualOutput) {
+        if (userAnswer === expected) {
             resultMessage.textContent = "🎉 정답입니다! 완벽해요!";
             resultContainer.classList.add("result-correct");
 
