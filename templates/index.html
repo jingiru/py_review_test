@@ -16,6 +16,34 @@
             <p>제시된 파이썬 코드의 출력을 예측해보세요!</p>
         </header>
 
+        <!-- === 문제 필터 섹션 === -->
+        <section class="filters-section" aria-label="문제 필터">
+          <div class="filter-group" aria-label="난이도 선택">
+            <span class="filter-label">난이도</span>
+            <div class="filter-buttons" role="group" aria-label="난이도">
+              <button class="pill-btn is-active" data-filter-kind="difficulty" data-value="all" aria-pressed="true">전체</button>
+              <button class="pill-btn" data-filter-kind="difficulty" data-value="easy">easy</button>
+              <button class="pill-btn" data-filter-kind="difficulty" data-value="normal">normal</button>
+              <button class="pill-btn" data-filter-kind="difficulty" data-value="hard">hard</button>
+            </div>
+          </div>
+
+          <div class="divider" aria-hidden="true"></div>
+
+          <div class="filter-group" aria-label="유형 선택">
+            <span class="filter-label">유형</span>
+            <div class="filter-buttons" role="group" aria-label="유형">
+              <button class="pill-btn is-active" data-filter-kind="type" data-value="all" aria-pressed="true">전체</button>
+              <button class="pill-btn" data-filter-kind="type" data-value="변수와 입출력">변수와 입출력</button>
+              <button class="pill-btn" data-filter-kind="type" data-value="리스트">리스트</button>
+              <button class="pill-btn" data-filter-kind="type" data-value="순차 구조">순차 구조</button>
+              <button class="pill-btn" data-filter-kind="type" data-value="선택 구조">선택 구조</button>
+              <button class="pill-btn" data-filter-kind="type" data-value="반복 구조">반복 구조</button>
+              <button class="pill-btn" data-filter-kind="type" data-value="알고리즘">알고리즘</button>
+            </div>
+          </div>
+        </section>
+
         <main>
             <div class="top-section">
                 <section class="card code-section">
