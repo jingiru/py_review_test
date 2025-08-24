@@ -69,7 +69,7 @@ def load_questions_from_sheet(force: bool = False):
     idx_code = find_index(["code", "문제"])
     idx_out  = find_index(["output", "답"])
 
-     rows = []
+    rows = []
     for r in values[1:]:
         # 메타 데이터(난이도/유형)는 trim, code/output은 공백 보존
         def cell_trim(idx):
