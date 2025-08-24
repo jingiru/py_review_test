@@ -40,12 +40,12 @@ def load_questions_from_sheet(force: bool = False):
 
     # 캐시 TTL 내면 재사용
     now = time.time()
-    if (now - _cache_loaded_at < CACHE_TTL) and _questions_cache and not force:
+    if (now - _cache_loaded_at < _CACHE_TTL) and _questions_cache and not force:
         return
 
     gc = _gs_client()
     sh = gc.open_by_key(SHEETS_ID)
-    ws = sh.worksheet(TAB_NAME)  # 원하는 탭만 읽기
+    ws = sh.worksheet("확정") 
 
     # 모든 값을 통으로 받아, 헤더를 직접 파싱해 중복 헤더 문제 회피
     values = ws.get_all_values()  # 2차원 리스트
