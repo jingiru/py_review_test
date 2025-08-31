@@ -6,11 +6,32 @@
     box-sizing: border-box;
 }
 
+:root{
+    --bg-grad-a:#667eea;
+    --bg-grad-b:#764ba2;
+    --ink:#2d3748;
+    --ink-sub:#4a5568;
+    --panel: rgba(255,255,255,0.95);
+    --panel-border: rgba(255,255,255,0.2);
+    --accent-100:#f7f5ff;
+    --accent-200:#f2efff;
+    --accent-500:#9f7aea;
+    --accent-600:#805ad5;
+    --accent-700:#6b46c1;
+    --blue-500:#4299e1;
+    --blue-600:#3182ce;
+    --blue-800:#2c5aa0;
+    --success-500:#48bb78;
+    --danger-500:#e53e3e;
+}
+
+html, body { height: 100%; }
+
 body {
     font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    height: 100vh;
-    color: #2d3748;
+    background: linear-gradient(135deg, var(--bg-grad-a) 0%, var(--bg-grad-b) 100%);
+    min-height: 100vh;
+    color: var(--ink);
     line-height: 1.6;
     overflow: hidden;
 }
@@ -27,12 +48,12 @@ body {
 
 /* ===== 헤더 ===== */
 header {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--panel);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     padding: 25px 40px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--panel-border);
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -53,9 +74,9 @@ header p {
 
 /* ===== 필터 섹션 ===== */
 .filters-section {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--panel);
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid var(--panel-border);
   border-radius: 16px;
   padding: 16px 20px;
   margin: 0 0 12px 0; /* 헤더 바로 아래 */
@@ -74,7 +95,7 @@ header p {
 
 .filter-label {
   font-weight: 600;
-  color: #4a5568;
+  color: var(--ink-sub);
   white-space: nowrap;
 }
 
@@ -88,7 +109,7 @@ header p {
 .pill-btn {
   appearance: none;
   border: 1px solid rgba(159, 122, 234, 0.35); /* 보라 라인 */
-  background: linear-gradient(135deg, #f7f5ff, #f2efff);
+  background: linear-gradient(135deg, var(--accent-100), var(--accent-200));
   color: #553c9a;
   padding: 8px 14px;
   border-radius: 999px;
@@ -111,10 +132,22 @@ header p {
 
 .pill-btn.is-active,
 .pill-btn[aria-pressed="true"] {
-  background: linear-gradient(135deg, #9f7aea, #6b46c1);
+  background: linear-gradient(135deg, var(--accent-500), var(--accent-700));
   color: #ffffff;
   border-color: transparent;
   box-shadow: 0 6px 16px rgba(107, 70, 193, 0.35);
+}
+
+.pill-btn:focus-visible{
+  outline: 3px solid rgba(66,153,225,0.35);
+  outline-offset: 2px;
+}
+
+.pill-btn:disabled{
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 /* 섹션 사이 구분선 */
@@ -140,26 +173,26 @@ main {
     grid-template-columns: 1.15fr 0.85fr;
     gap: 20px;
     flex: 1;
+    min-height: 0; /* 자식 overflow 스크롤 안정화 */
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--panel);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     padding: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--panel-border);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    min-height: 0;
 }
 
 /* ===== 코드 영역 ===== */
-.code-section {
-    flex: 1;
-}
+.code-section { flex: 1; min-height: 0; }
 
 .code-section h2 {
-    color: #2d3748;
+    color: var(--ink);
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 15px;
@@ -177,6 +210,7 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 280px;
 }
 
 .code-header {
@@ -186,12 +220,7 @@ main {
     margin-bottom: 12px;
 }
 
-.code-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-
+.code-dot { width: 12px; height: 12px; border-radius: 50%; }
 .dot-red { background: #ff5f56; }
 .dot-yellow { background: #ffbd2e; }
 .dot-green { background: #27ca3f; }
@@ -211,13 +240,10 @@ main {
 }
 
 /* ===== 답변 입력 영역 ===== */
-.answer-section {
-    text-align: center;
-    flex: 1;
-}
+.answer-section { text-align: center; flex: 1; min-height: 0; }
 
 .answer-section h2 {
-    color: #2d3748;
+    color: var(--ink);
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 15px;
@@ -230,13 +256,14 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 0;
 }
 
 .input-label {
     display: block;
     font-weight: 500;
     font-size: 1.1rem;
-    color: #4a5568;
+    color: var(--ink-sub);
     margin-bottom: 12px;
     text-align: left;
 }
@@ -244,28 +271,26 @@ main {
 #user-answer {
     width: 100%;
     flex: 1;
+    min-height: 180px;
     padding: 16px;
     font-size: 1.1rem;
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     background: #f7fafc;
-    color: #2d3748;
-    resize: none;
+    color: var(--ink);
+    resize: vertical;
     transition: all 0.3s ease;
 }
 
 #user-answer:focus {
     outline: none;
-    border-color: #4299e1;
+    border-color: var(--blue-500);
     background: #fff;
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
-#user-answer::placeholder {
-    color: #a0aec0;
-    font-size: 1rem;
-}
+#user-answer::placeholder { color: #a0aec0; font-size: 1rem; }
 
 /* ===== 버튼 ===== */
 .btn-next,
@@ -281,56 +306,45 @@ main {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+.btn-next:disabled,
+.btn-check:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
 
 /* ===== 다른 문제 도전 버튼 디자인 ===== */
 .btn-next {
-    background: linear-gradient(135deg, #9f7aea, #6b46c1);
+    background: linear-gradient(135deg, var(--accent-500), var(--accent-700));
     box-shadow: 0 4px 15px rgba(113, 128, 150, 0.3);
 }
 
-.btn-next:hover {
-    transform: translateY(-2px);
-    background: linear-gradient(135deg, #805ad5, #553c9a);
-    box-shadow: 0 8px 25px rgba(113, 128, 150, 0.4);
-}
-
-.btn-next:active {
-    transform: translateY(0);
-}
-
+.btn-next:hover { transform: translateY(-2px); background: linear-gradient(135deg, var(--accent-600), #553c9a); box-shadow: 0 8px 25px rgba(113, 128, 150, 0.4); }
+.btn-next:active { transform: translateY(0); }
 
 /* ===== 정답 확인 버튼 디자인 ===== */
 .btn-check {
-    background: linear-gradient(135deg, #4299e1, #3182ce);
+    background: linear-gradient(135deg, var(--blue-500), var(--blue-600));
     box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
 }
 
-.btn-check:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4);
-    background: linear-gradient(135deg, #3182ce, #2c5aa0);
-}
-
-.btn-check:active {
-    transform: translateY(0);
-}
-
-
+.btn-check:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4); background: linear-gradient(135deg, var(--blue-600), var(--blue-800)); }
+.btn-check:active { transform: translateY(0); }
 
 /* ===== 결과 영역 ===== */
 .result-section {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--panel);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--panel-border);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 150px;
 }
 
-
 .result-section h2 {
-    color: #2d3748;
+    color: var(--ink);
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 12px;
@@ -361,20 +375,17 @@ main {
 
 .result-correct {
     background: linear-gradient(135deg, #f0fff4, #e6fffa) !important;
-    border-color: #48bb78 !important;
+    border-color: var(--success-500) !important;
     color: #22543d !important;
 }
 
 .result-incorrect {
     background: linear-gradient(135deg, #fff5f5, #fed7d7) !important;
-    border-color: #e53e3e !important;
+    border-color: var(--danger-500) !important;
     color: #742a2a !important;
 }
 
-
-
 /* === 폭죽 === */
-
 #fireworks-canvas {
     position: absolute;
     top: 0;
@@ -385,107 +396,34 @@ main {
     z-index: 9999;
 }
 
-
-
-/* ===== 반응형 디자인 ===== 
-@media (max-width: 1400px) {
-    .container {
-        max-width: 1200px;
-        padding: 15px 25px;
-    }
-    
-    header h1 {
-        font-size: 2.4rem;
-    }
-    
-    header p {
-        font-size: 1.1rem;
-    }
+/* ===== 반응형 디자인 ===== */
+@media (max-width: 1200px){
+  .filters-section { grid-template-columns: 1fr; gap: 10px; }
+  .divider{ display: none; }
 }
 
 @media (max-width: 1024px) {
-    body {
-        overflow-y: auto;
-    }
-    
-    .container {
-        height: auto;
-        min-height: 100vh;
-    }
-    
-    .top-section {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .result-section {
-        height: auto;
-    }
-    
-    .result-container {
-        height: auto;
-        min-height: 60px;
-        padding: 20px;
-    }
+    body { overflow-y: auto; }
+    .container { height: auto; min-height: 100vh; }
+    .top-section { grid-template-columns: 1fr; gap: 15px; }
+    .result-section { height: auto; }
+    .result-container { height: auto; min-height: 60px; padding: 20px; }
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 15px 20px;
-    }
-    
-    header {
-        padding: 20px 25px;
-        margin-bottom: 15px;
-    }
-    
-    header h1 {
-        font-size: 2.2rem;
-    }
-    
-    header p {
-        font-size: 1rem;
-    }
-    
-    .card {
-        padding: 20px;
-    }
-    
+    .container { padding: 15px 20px; }
+    header { padding: 20px 25px; margin-bottom: 15px; }
+    header h1 { font-size: 2.2rem; }
+    header p { font-size: 1rem; }
+    .card { padding: 20px; }
     .code-section h2,
     .answer-section h2,
-    .result-section h2 {
-        font-size: 1.4rem;
-    }
-    
-    #python-code {
-        font-size: 1rem;
-    }
-    
-    .input-label {
-        font-size: 1rem;
-    }
-    
-    #user-answer {
-        font-size: 1rem;
-        padding: 14px;
-    }
-    
-    .btn {
-        font-size: 1rem;
-        padding: 12px 28px;
-    }
-    
-    #result-message {
-        font-size: 1rem;
-    }
-    
-    main {
-        gap: 15px;
-    }
-    
-    .result-section {
-        padding: 15px;
-    }
+    .result-section h2 { font-size: 1.4rem; }
+    #python-code { font-size: 1rem; }
+    .input-label { font-size: 1rem; }
+    #user-answer { font-size: 1rem; padding: 14px; min-height: 140px; }
+    .btn-next, .btn-check { font-size: 1rem; padding: 12px 24px; }
+    #result-message { font-size: 1rem; }
+    main { gap: 15px; }
+    .result-section { padding: 15px; }
 }
-
-*/

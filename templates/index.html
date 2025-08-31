@@ -18,6 +18,7 @@
 
         <!-- === 문제 필터 섹션 === -->
         <section class="filters-section" aria-label="문제 필터">
+          <!-- 난이도 필터 -->
           <div class="filter-group" aria-label="난이도 선택">
             <span class="filter-label">난이도</span>
             <div class="filter-buttons" role="group" aria-label="난이도">
@@ -30,6 +31,7 @@
 
           <div class="divider" aria-hidden="true"></div>
 
+          <!-- 유형 필터 -->
           <div class="filter-group" aria-label="유형 선택">
             <span class="filter-label">유형</span>
             <div class="filter-buttons" role="group" aria-label="유형">
@@ -46,6 +48,7 @@
 
         <main>
             <div class="top-section">
+                <!-- 코드 영역 -->
                 <section class="card code-section">
                     <h2>📜 파이썬 코드</h2>
                     <div class="code-container">
@@ -57,9 +60,9 @@
                         <pre id="python-code">{{ code }}</pre>
                     </div>
                     <button id="next-question" class="btn-next" style="margin-top: 10px;">다른 문제 도전하기</button>
-
                 </section>
 
+                <!-- 답변 입력 영역 -->
                 <section class="card answer-section">
                     <h2>💭 출력 결과</h2>
                     <div class="input-group">
@@ -70,6 +73,7 @@
                 </section>
             </div>
 
+            <!-- 결과 영역 -->
             <section class="result-section">
                 <h2>🎯 결과</h2>
                 <div class="result-container" id="result-container">
@@ -77,10 +81,9 @@
                 </div>
             </section>
 
-        <canvas id="fireworks-canvas"></canvas>
-    
+            <!-- 폭죽 캔버스 -->
+            <canvas id="fireworks-canvas"></canvas>
         </main>
-
     </div>
 
     <!-- 서버에서 전달한 실제 출력값을 JS에서 사용할 수 있게 전달 -->
