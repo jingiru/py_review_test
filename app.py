@@ -17,7 +17,7 @@ SA_JSON   = os.getenv("GOOGLE_SERVICE_ACCOUNT_JSON")  # 필수
 # ===== 캐시 =====
 _questions_cache: List[Dict[str, Any]] = []
 _cache_loaded_at = 0.0
-_CACHE_TTL = 300  # 초. 5분마다 새로고침
+_CACHE_TTL = 60  # 초. 5분마다 새로고침
 
 
 # ===== 유틸 =====
