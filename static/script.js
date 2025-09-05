@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultContainer = document.getElementById("result-container");
     const codeEl = document.getElementById("python-code");
     const filtersSection = document.querySelector(".filters-section");
+    let lastCode = codeEl.textContent;
 
     // --- 필터 상태 관리 (localStorage 복원 포함) ---
     const DEFAULT_STATE = { difficulty: "all", type: "all" };  
@@ -114,21 +115,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 문제 새로고침 함수(필터 반영)
+
     const loadNewQuestion = async () => {
         const url = buildNextUrl();
-        const res = await fetch(url, { cache: "no-store" });
-        if (!res.ok) {
-            console.error("문제 로딩 실패:", res.status);
-            return;
-        }
-        const data = await res.json();
 
-        // 코드/정답 반영
+        const MAX_TRIES = 3;   // 중복이면 최대 3번까지만 다시 시도
+        let tries = 0;
+        let data = null;
+
+        do {
+            const res = await fetch(url, { cache: "no-store" });
+            if (!res.ok) {
+                console.error("문제 로딩 실패:", res.status);
+                return;
+            }
+            data = await res.json();
+
+            // 중복이 아니면 루프 탈출
+            if (data.code !== lastCode) break;
+
+            tries += 1;
+        } while (tries < MAX_TRIES);
+
+        // 표시/상태 갱신
         codeEl.textContent = data.code;
         expected = data.output;
-
+        lastCode = data.code;
         resetResultUI();
+
+        // 참고: 필터 결과가 1개뿐이면 중복이 계속될 수 있어요.
+        if (tries === MAX_TRIES && data.code === lastCode) {
+            console.info("필터 결과가 매우 적어 같은 문제가 반복될 수 있습니다.");
+        }
     };
+
 
     // 필터 버튼 바인딩: 클릭 시 state 갱신 + 저장 + 즉시 새 문제 로드
     if (filtersSection) {
