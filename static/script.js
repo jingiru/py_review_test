@@ -52,7 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const filtersSection = document.querySelector(".filters-section");
 
     // --- 필터 상태 관리 (localStorage 복원 포함) ---
-    const DEFAULT_STATE = { difficulty: "all", type: "all" };
+    const state = { ...DEFAULT_STATE };
+
+    /*
+    기존 필터 저장부
     const loadPersistedState = () => {
         try {
             const saved = JSON.parse(localStorage.getItem("pyquiz.filters") || "{}");
@@ -61,11 +64,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return { ...DEFAULT_STATE };
         }
     };
-    const state = loadPersistedState();
+    const state = { ...DEFAULT_STATE };
+    localStorage.removeItem("pyquiz.filters");
 
     const persistState = () => {
         localStorage.setItem("pyquiz.filters", JSON.stringify(state));
     };
+    */
 
     // --- 그룹 내 버튼 active/aria 토글 ---
     function activateButtonInGroup(groupEl, valueToActivate) {
