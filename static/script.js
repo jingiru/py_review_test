@@ -52,7 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const filtersSection = document.querySelector(".filters-section");
 
     // --- 필터 상태 관리 (localStorage 복원 포함) ---
-    const state = { ...DEFAULT_STATE };
+    const DEFAULT_STATE = { difficulty: "all", type: "all" };  
+    const state = { ...DEFAULT_STATE };   
 
     /*
     기존 필터 저장부
@@ -144,7 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // 상태 갱신 + 저장
             state[kind] = value;
-            persistState();
 
             // 새 문제 로드
             loadNewQuestion();
